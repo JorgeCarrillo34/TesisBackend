@@ -2,7 +2,10 @@ const mysql = require ('mysql');
 const mysqlConnection = mysql.createConnection({
     host:'localhost',
     user: 'root',
-    password: '052300$',
+    //Contraseña Cristian
+    password: 'password',
+    //Contraseña jorge
+    //password: '052300$',
     database: 'tesisdb'
 })
 

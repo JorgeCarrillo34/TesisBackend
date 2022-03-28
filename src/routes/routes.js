@@ -3,6 +3,7 @@ const router = Router();
 const {exec} = require("child_process");
 const mysqlConnection= require('../database');  
 
+
 router.get('/db', (req,res) => {
 //router.get('/based/:id', (req,res) => {
     //const {id}=req.params;
@@ -17,6 +18,36 @@ router.get('/db', (req,res) => {
     })
 
 });
+
+//QUERY PARA CONSULTAR LOS REPOSITORIOS
+router.get('/consultarRepos', (req,res) => {
+    mysqlConnection.query('SELECT * FROM tesisdb.master; ', (err,rows,fields) =>{
+    if(!err){ 
+       res.json(rows);
+    }
+    else{
+         console.log(err);
+        }
+    })
+});
+
+
+
+//QUERY PARA CONSULTAR LAS COLUMNAS DISPONIBLES DE LOS REPOSITORIOS
+router.get('/consultarColumnas/:id',(req,res) =>{
+        const {id} = req.params;
+        mysqlConnection.query('SELECT * FROM tesisdb.campos_repositorios where idMaster = ? ',[id], (err,rows,fields) =>{
+            if(!err){ 
+                res.json(rows);
+            }
+            else{
+                console.log(err);
+            }
+        })
+    
+    });
+
+
 /*
 router.post('/db', (req,res) => {
             mysqlConnection.query('select nombre_repositorio from master where id = 1 ', (err,rows,fields) =>{
