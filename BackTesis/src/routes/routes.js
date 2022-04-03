@@ -4,11 +4,11 @@ const {exec} = require("child_process");
 const mysqlConnection= require('../database');  
 
 
-router.get('/db', (req,res) => {
-//router.get('/based/:id', (req,res) => {
-    //const {id}=req.params;
-    //mysqlConnection.query('select name from imagen where id = ? ',[id], (err,rows,fields) =>{
-        mysqlConnection.query('select link from master where id = 1 ', (err,rows,fields) =>{
+//router.get('/db', (req,res) => {
+router.get('/db/:id', (req,res) => {
+    const {id}=req.params;
+    mysqlConnection.query('select link from master where id = ? ',[id], (err,rows,fields) =>{
+    //    mysqlConnection.query('select link from master where id = 1 ', (err,rows,fields) =>{        
         if(!err){ 
             res.json(rows[0]);
         }

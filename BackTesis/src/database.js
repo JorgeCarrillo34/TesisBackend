@@ -3,9 +3,9 @@ const mysqlConnection = mysql.createConnection({
     host:'localhost',
     user: 'root',
     //Contraseña Cristian
-    password: 'password',
+    //password: 'password',
     //Contraseña jorge
-    //password: '052300$',
+    password: '052300$',
     database: 'tesisdb'
 })
 
@@ -16,6 +16,7 @@ mysqlConnection.connect(function(err){
     }
     else {
         console.log('Db esta conectado')
+
     }
 });
 
